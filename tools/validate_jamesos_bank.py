@@ -5,7 +5,7 @@ import re
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / "HORATIO-1-SOURCE-BANK.md"
+SOURCE = ROOT / "JAMESOS-SOURCE-BANK.md"
 EXPECTED = {"SYNTHWAVE": 17, "VAPORWAVE": 17, "IDM & BRAINDANCE": 16}
 ROW = re.compile(
     r"^\|\s*(\d{2})\s*\|\s*([^|]+?)\s*\|\s*([^|]+?)\s*\|"
