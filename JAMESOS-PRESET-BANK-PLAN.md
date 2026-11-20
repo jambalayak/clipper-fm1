@@ -25,7 +25,7 @@ Every source entry has a name, a Plaits engine/model label, H/T/M percentages, a
 
 ## Trio combinations
 
-The 12 user-supplied three-track combinations are retained as reference performance concepts. Clipper synth mode is a single instrument (with an optional second layer), not a three-independent-synth-track groovebox. Do not represent a trio as a native three-track preset unless it is deliberately redesigned for the Clipper layer architecture. Drum lanes are excluded throughout.
+The 12 user-supplied three-track combinations should be retained as reference performance concepts in the source manifest. Clipper synth mode is a single instrument (with an optional second layer), not a three-independent-synth-track groovebox. Do not represent a trio as a native three-track preset unless it is deliberately redesigned for the Clipper layer architecture. Drum lanes are excluded throughout.
 
 ## Implementation sequence
 
