@@ -458,6 +458,10 @@ static const preset_t GRAIN_PRESETS[] = {
      .x = {P_LD_SHP + 1, 52, P_LRATE + 1, 20, P_LWAVE + 1, 1}},
     {"WIND CHOIR", {7, 60, 100, 96, 0, 44, 10, 100}, {84, 100, 124, 100}, 0, 0, FX(0, 40, 24, 86)},
     {"BREATH GRAIN", {7, 50, 26, 94, 0, 110, 40, 110}, {10, 100, 120, 90}, 0, 0, FX(0, 20, 40, 72)},
+    /* JAMESOS: these use Clipper's bundled synthesized sets (PAD, GLASS, AIR), not user sample slots. */
+    {"HYPNAGOGIC", {6, 45, 105, 76, 0, 74, 70, 82}, {78, 100, 120, 96}, 0, 0, FX(0, 42, 34, 78)},
+    {"AUTECHRE GRAIN", {5, 70, 24, 112, 0, 92, 78, 112}, {0, 30, 8, 26}, 0, 0, FX(0, 18, 44, 48)},
+    {"DATA STREAM", {7, 90, 12, 127, 0, 110, 92, 76}, {0, 18, 0, 20}, 0, 0, FX(10, 0, 28, 34)},
 };
 #else
 static const preset_t GRAIN_PRESETS[] = {
