@@ -1,4 +1,4 @@
-# JAMESOS trio and performance reference
+# HORATIO-1 trio and performance reference
 
 All four drum lanes are muted. These are performance templates from the original design, not native three-track Clipper presets: Clipper synth mode is a single instrument with an optional second layer. Any adaptation must preserve the musical roles without pretending the hardware has three independent synth tracks.
 
