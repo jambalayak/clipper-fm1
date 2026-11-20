@@ -37,7 +37,7 @@ jobs:
           python -m pip install --upgrade pip Pillow
 
       - name: Install JieLi toolchain
-        run: tools/get_toolchain.sh "$HOME/.jieli"
+        run: sh tools/get_toolchain.sh "$HOME/.jieli"
 
       - name: Fetch tested AC79 SDK
         run: |
