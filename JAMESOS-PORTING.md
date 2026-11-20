@@ -56,8 +56,10 @@ The 12 supplied three-part combinations are performance ideas, not automatically
 5. Run the host test suite after firmware or preset-data changes; run the target build before producing an installable `.fwsc`.
 6. Do not claim the firmware is install-ready until the target build and package validation pass.
 
-## Current baseline
+## Current implementation status
 
-- Base: Clipper 1.3.1, branch `main` at the time this branch was created.
-- Working branch: `jamesos-development`.
-- No firmware source files have been changed yet.
+- Base: Clipper 1.3.1; working branch: `jamesos-development`; upstream `main` remains untouched.
+- `firmware/src/eng_macro.c` now includes 10 JAMESOS MACRO factory presets: JUNO BRASS 84, NEON POLY, SUNSET STRINGS, VHS CHOIR, MACINTOSH PAD, ECCOJAM LOOP, LATE NIGHT WX, ELEVATOR CHIME, LIQUID FORMANT and FRACTURED CHRD.
+- These are native Clipper MACRO patches. Their source-bank H/T/M percentages are scaled to HARM/TIMB/MORPH (0–127); the destination model, envelope, filter and FX fields are authored for Clipper. They are not full Mutable Instruments Plaits patches.
+- The other 40 sounds remain design targets in the source bank and have not yet been added to firmware.
+- GitHub Actions is running the host suite for the first preset commit. The `.fwsc` target build/package is still pending.
