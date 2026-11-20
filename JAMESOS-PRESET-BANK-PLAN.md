@@ -29,13 +29,13 @@ The 12 user-supplied three-track combinations should be retained as reference pe
 
 ## Implementation sequence
 
-1. Recover the exact 50 source entries and 12 trio names from the original user-supplied text.
-2. Store them in a machine-readable manifest with stable IDs and source notes.
-3. Assign each sound to a Clipper engine and parameter schema.
-4. Generate engine-native factory preset records and curate the JAMESOS browse order.
-5. Add manifest/translation validation tests (50 unique IDs, category counts 17/17/16, bounded parameter values, no drum references).
-6. Run host tests and the FM-1 target build before publishing an installable firmware package.
+1. [x] Recover and check in the exact 50 source entries and 12 trio templates.
+2. [x] Preserve stable IDs, source model labels, H/T/M values and sound-design notes in the source bank.
+3. [x] Create a first-pass Clipper engine destination map for all 50 sounds.
+4. [ ] Translate each entry into engine-native factory preset records and curate the JAMESOS browse order.
+5. [x] Add a validator for 50 unique IDs, category counts 17/17/16, bounded H/T/M values and complete notes; run it in GitHub Actions.
+6. [ ] Run the full host test suite and FM-1 target build before publishing an installable firmware package.
 
 ## Current status
 
-The architecture is researched and documented. The exact 50-entry literal source list is not present in the current Clipper repository branch, so no sound names or parameter values are fabricated here. No firmware source code or factory presets have yet been changed.
+The complete source bank and trio reference are now committed. The JAMESOS bank validator passed in GitHub Actions. A first-pass engine map is committed, with GRAIN presets explicitly marked as needing user sample sources. Firmware factory presets have not yet been changed; the next major task is engine-native patch programming and integration.
