@@ -1,0 +1,30 @@
+# HORATIO-1
+
+HORATIO-1 is a drum-free synthesizer firmware project for the M-VAVE FM-1, developed on the `jamesos-development` branch of this repository.
+
+## Product direction
+
+- Four-voice paraphonic synth mode with a shared four-voice budget and shared gate/amplitude envelope.
+- MicroFreak-inspired control layout, adapted for the FM-1's small display.
+- Vaporwave / retro-futurist visual identity: neon magenta, cyan and violet, gradient surfaces, restrained scanlines, and chrome/glass accents.
+- An original audio-reactive home-screen visualizer inspired by the era of 2000s desktop media-player visualizers; do not copy proprietary Microsoft artwork.
+- A 50-sound factory collection spanning Synthwave, Vaporwave, and IDM / Braindance.
+- No drum part, drum sequencer, or legacy drum-system UI in the intended product.
+
+## Current implementation
+
+- The 50 source-bank sounds are translated into native Clipper engine factory preset records. The engine map documents the actual destination engine and compiled label for each sound.
+- The preset bank is exposed as one contiguous category in the factory browser. The compact on-device category label is `HORATIO`; the product name is HORATIO-1.
+- Synth mode defaults to four voices. The legacy non-synth/groovebox configuration retains its original eight-voice default.
+- The host validator checks the 50 source entries, category counts, parameter bounds, native factory preset labels, and browser entries.
+
+## Important scope and accuracy notes
+
+- This is currently a Clipper-derived engine adaptation, not a complete Mutable Instruments Plaits port. Several source-model ideas are approximated using the available native engines.
+- Mutable Instruments Beads effects have not yet been ported.
+- The visualizer and complete vaporwave UI treatment remain planned work unless specifically marked implemented in source.
+- The original SLOOP / Clipper lineage and upstream licensing notices remain intact.
+
+## Build and testing
+
+The dedicated GitHub Actions workflows validate the source bank and host tests, and build the FM-1 target package. The installable `.fwsc` output is produced by the target build; always use the latest successful workflow artifact rather than an older build after source changes.
