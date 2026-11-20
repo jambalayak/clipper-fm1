@@ -181,9 +181,9 @@ def build_loader():
 def build_app():
     flags = [*CFLAGS, "-Ifirmware/hal", "-Ifirmware/src", "-Ibuild/gen"]
     for flag in ("FELUCCA_FLASH", "FELUCCA_OTA", "FELUCCA_OTA_DRYRUN", "FELUCCA_CDC", "FELUCCA_UART",
-                 "FELUCCA_ICONS", "FELUCCA_SLICE", "FELUCCA_CPU1", "NVOICE"):   # (Clipper: NVOICE=12 ./build.sh, the CPU trials)
+                 "FELUCCA_ICONS", "FELUCCA_SLICE", "FELUCCA_CPU1", "NVOICE"):   # (JAMESOS default 4; Clipper CPU trials: 8 / 12 / 16)
         v = os.environ.get(flag)    # unset: the default in firmware/src/felucca.c
-        if v in ("0", "1") or (flag == "NVOICE" and v in ("8", "12", "16")):
+        if v in ("0", "1") or (flag == "NVOICE" and v in ("4", "8", "12", "16")):
             flags.append(f"-D{flag}={v}")
     flags.append(f'-DFELUCCA_ID="{PRODUCT}"')
     if VERSION:
