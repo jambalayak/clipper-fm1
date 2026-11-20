@@ -12,7 +12,7 @@
 #                   +25 %; counted by the kernel or under callgrind, else timed at +35 %), ns printed;
 #                   target: loop instructions of the render functions in build/felucca.dis
 #                   (tests/target_budget.txt, +10 %; exact, static).
-#   voices          the budget of 8, steal fades, MONO / LEGATO / UNISON keep their note, the VOICE cap,
+#   voices          the shared voice budget (JAMESOS synth: 4; groovebox: 8), steal fades, MONO / LEGATO / UNISON, the VOICE cap,
 #                   no hanging notes on any MIDI / key routing.
 # FM6 (tests/fm6_test.c): the 6-operator FM engine (firmware/src/eng_fm6.c, fm6_core.c, fm6_bank.c): the 32
 #                   algorithms' carriers, the operator envelopes ending the voice, retrigger, DC / clipping, the
