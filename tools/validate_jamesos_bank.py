@@ -112,7 +112,7 @@ def main() -> int:
 
     ui = (firmware / "ui.c").read_text(encoding="utf-8")
     for preset_id, (_, label) in IMPLEMENTED.items():
-        pattern = re.compile(r'\{\s*BK_HORATIO-1\s*,\s*[^,]+,\s*"' + re.escape(label) + r'"\s*\}')
+        pattern = re.compile(r'\{\s*BK_HORATIO1\s*,\s*[^,]+,\s*"' + re.escape(label) + r'"\s*\}')
         if not pattern.search(ui):
             raise SystemExit(f"Preset {preset_id:02d}: {label!r} missing from the unified HORATIO-1 browser list")
 
