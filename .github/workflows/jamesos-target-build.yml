@@ -2,13 +2,13 @@ name: HORATIO-1 FM-1 target build
 
 on:
   push:
-    branches: [horatio1-development]
+    branches: [jamesos-development]
     paths:
       - "firmware/**"
       - "tools/**"
       - "assets/**"
       - "build.sh"
-      - ".github/workflows/horatio1-target-build.yml"
+      - ".github/workflows/jamesos-target-build.yml"
 
 permissions:
   contents: read
