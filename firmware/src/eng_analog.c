@@ -148,6 +148,21 @@ static const preset_t ANALOG_PRESETS[] = {
      XP(P_VELF + 1, 40, P_TRANS + 1, -12, P_FMODEL + 1, FM_MOOG)},
     {"WAH LEAD", {0, 8, 64, 0, 60, 70, 20, 64}, {2, 70, 110, 40}, 0, 1, FX(0, 10, 26, 24),
      XP(P_MWDST + 1, MD_WAH, P_LRATE + 1, 70, P_LD_FLT + 1, 20, P_GLIDE + 1, 30)},
+    /* JAMESOS: synthwave / vaporwave virtual-analog translations. */
+    {"OUTRUN SUB", {3, 0, 0, 0, 34, 14, 8, 0}, {0, 68, 0, 24}, 36, 1, FX(0, 0, 0, 8),
+     XP(P_TRANS + 1, -24)},
+    {"NIGHTCALL PWM", {4, 0, 0, 0, 58, 24, 8, 64}, {0, 76, 82, 36}, 22, 1, FX(0, 12, 12, 24),
+     XP(P_LRATE + 1, 24, P_LD_SHP + 1, 18)},
+    {"TURBO ARP", {0, 0, 20, 0, 50, 28, 12, 64}, {0, 24, 0, 42}, 46, 0, FX(0, 8, 18, 28)},
+    {"CHROME LEAD", {0, 16, 64, 0, 78, 18, 8, 64}, {2, 82, 76, 48}, 24, 1, FX(0, 18, 24, 30),
+     XP(P_LRATE + 1, 82, P_LD_PIT + 1, 2, P_GLIDE + 1, 24)},
+    {"ARCADE OCT", {1, 0, 64, 0, 66, 14, 10, 64}, {0, 76, 82, 30}, 18, 0, FX(0, 12, 16, 24)},
+    {"TAPE DETUNE", {0, 8, 56, 0, 48, 12, 0, 64}, {6, 82, 68, 58}, 16, 0, FX(0, 24, 18, 40),
+     XP(P_LRATE + 1, 16, P_LD_PIT + 1, 1)},
+    {"FADED CASSETTE", {0, 5, 52, 4, 34, 8, 0, 48}, {12, 86, 76, 66}, 12, 0, FX(0, 18, 22, 48),
+     XP(P_LRATE + 1, 12, P_LD_PIT + 1, 1)},
+    {"BOC WARP TAPE", {0, 14, 64, 0, 52, 10, 0, 48}, {18, 88, 72, 68}, 12, 0, FX(0, 26, 18, 52),
+     XP(P_LRATE + 1, 20, P_LD_PIT + 1, 2)},
 #endif
 };
 
