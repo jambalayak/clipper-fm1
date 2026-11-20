@@ -220,8 +220,8 @@ static void t_vintage(void)
 {
     track_t *t = &trk[0];
     uint32_t i;
-    double f[8], spread0 = 0, spread = 0, mx = 0;
-    for (i = 0; i < 8u; i++) {                          /* VINTAGE 0: one note on each voice in turn: in tune */
+    double f[NVOICE], spread0 = 0, spread = 0, mx = 0;
+    for (i = 0; i < NVOICE; i++) {                     /* VINTAGE 0: one note on each available voice in turn */
         quiet();
         plain(t, 0, 0);
         t->p[P_E0] = 3, t->p[P_E4] = 127, t->p[P_E5] = 0;
