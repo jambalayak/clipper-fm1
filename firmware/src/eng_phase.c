@@ -190,6 +190,8 @@ static const preset_t PHASE_PRESETS[] = {
     {"CZ PLUCK", {0, 0, 70, 90, 0, 0, 0, 0}, {0, 70, 0, 50}, 0, 0, FX(0, 10, 30, 30)},
     {"CZ SOLO", {5, 0, 60, 60, 6, 0, 0, 0}, {2, 70, 110, 40}, 0, 1, FX(0, 10, 26, 24), XP(P_GLIDE + 1, 30, P_MWDST + 1, MD_VIB)},
     {"CZ EPIANO", {3, 0, 55, 70, 0, 0, 0, 0}, {0, 82, 30, 55}, 0, 0, FX(0, 30, 10, 28)},
+    /* JAMESOS: resonant CZ-style phase-distortion saw. */
+    {"GRID RUNNER", {5, 0, 78, 82, 4, 0, 0, 0}, {0, 24, 0, 28}, 42, 0, FX(0, 10, 22, 30)},
 #endif
 };
 
