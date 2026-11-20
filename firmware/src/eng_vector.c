@@ -103,6 +103,7 @@ static void vector_render(track_t *t, voice_t *v, int32_t *out, uint32_t n, cons
     if (v->fmodel != (uint8_t)model) {                /* a new model has a different state layout and scale */
         st[0] = st[1] = st[2] = st[3] = 0;
         v->fmodel = (uint8_t)model;
+        duck = 256u;
         v->fduck = 256u;
     }
 #endif
