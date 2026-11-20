@@ -63,5 +63,6 @@ The 12 supplied three-part combinations are performance ideas, not automatically
 - MACRO H/T/M maps directly to HARM/TIMB/MORPH. Other engines use their own parameter semantics, envelopes and FX rather than blind H/T/M copying. These are Clipper-native translations, not a full Mutable Instruments Plaits port.
 - The three GRAIN presets use Clipper's bundled synthesized PAD, GLASS and AIR sample sets (source indices 6, 5 and 7), so no user-uploaded audio is required.
 - The new entries are guarded by `CLIPPER_SYNTH` where the engine is also present in the groovebox build, preserving the legacy non-synth preset table.
-- The source-bank validator now checks all 50 compiled preset labels as well as the source IDs, category counts and H/T/M bounds.
+- `firmware/src/ui.c` now exposes the 50 presets as one contiguous `JAMESOS` category in the global factory preset browser, in original ID order; the engine filter remains available.
+- The source-bank validator checks all 50 compiled preset labels and all 50 unified browser entries as well as source IDs, category counts and H/T/M bounds.
 - GitHub Actions is running the host suite for the first preset commit. The `.fwsc` target build/package is still pending.
