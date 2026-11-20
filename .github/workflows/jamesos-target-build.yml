@@ -46,9 +46,6 @@ jobs:
             "$HOME/fw-AC79_AIoT_SDK"
 
       - name: Build FM-1 firmware and install package
-        env:
-          JIELI_TOOLCHAIN: ${{ runner.temp }}/../.jieli/toolchain
-          AC79_SDK: ${{ runner.temp }}/../fw-AC79_AIoT_SDK
         run: |
           export JIELI_TOOLCHAIN="$HOME/.jieli/toolchain"
           export AC79_SDK="$HOME/fw-AC79_AIoT_SDK"
