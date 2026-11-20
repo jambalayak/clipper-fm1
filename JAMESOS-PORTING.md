@@ -59,6 +59,7 @@ The 12 supplied three-part combinations are performance ideas, not automatically
 ## Current implementation status
 
 - Base: Clipper 1.3.1; working branch: `jamesos-development`; upstream `main` remains untouched.
+- JAMESOS synth mode defaults to four voices, matching the agreed polyphony budget; the non-synth SLOOP/groovebox build keeps its original eight-voice default. The build script accepts explicit 4/8/12/16 voice overrides.
 - All 50 JAMESOS sounds now have native Clipper factory preset records across MACRO, PHYS, ANALOG, DIGITAL, VPS, PHASE, WHEEL, VOICE, NOISE and GRAIN. See `JAMESOS-ENGINE-MAP.md` for the exact compiled label for every source-bank ID.
 - MACRO H/T/M maps directly to HARM/TIMB/MORPH. Other engines use their own parameter semantics, envelopes and FX rather than blind H/T/M copying. These are Clipper-native translations, not a full Mutable Instruments Plaits port.
 - The three GRAIN presets use Clipper's bundled synthesized PAD, GLASS and AIR sample sets (source indices 6, 5 and 7), so no user-uploaded audio is required.
