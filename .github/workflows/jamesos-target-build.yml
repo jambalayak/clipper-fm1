@@ -1,20 +1,20 @@
-name: JAMESOS FM-1 target build
+name: HORATIO-1 FM-1 target build
 
 on:
   push:
-    branches: [jamesos-development]
+    branches: [horatio1-development]
     paths:
       - "firmware/**"
       - "tools/**"
       - "assets/**"
       - "build.sh"
-      - ".github/workflows/jamesos-target-build.yml"
+      - ".github/workflows/horatio1-target-build.yml"
 
 permissions:
   contents: read
 
 concurrency:
-  group: jamesos-target-build-${{ github.ref }}
+  group: horatio1-target-build-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -54,7 +54,7 @@ jobs:
       - name: Upload installable package and build images
         uses: actions/upload-artifact@v4
         with:
-          name: jamesos-fm1-firmware
+          name: horatio1-fm1-firmware
           if-no-files-found: error
           path: |
             build/felucca.fwsc
