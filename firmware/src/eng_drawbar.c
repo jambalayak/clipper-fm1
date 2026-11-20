@@ -286,6 +286,8 @@ static const preset_t DRAWBAR_PRESETS[] = {
     {"BLUES ORGN", {5, 0, 0, 0, 1, 60, 50, 1}, {0, 64, 127, 40}, 0, 0, FX(20, 0, 0, 24)},
     {"STRING ORG", {11, 0, 0, 0, 0, 20, 0, 1}, {30, 64, 127, 60}, 0, 0, FX(0, 20, 0, 40)},
     {"REED ORGAN", {10, 0, 0, 0, 0, 20, 20, 0}, {0, 64, 127, 40}, 0, 0, FX(0, 10, 0, 30)},
+    /* JAMESOS: warm drawbar organ for the vaporwave lounge patch. */
+    {"PLAZA ORGAN", {11, 0, 2, 1, 0, 18, 8, 1}, {0, 48, 127, 56}, 0, 0, FX(0, 18, 12, 56)},
 #endif
 };
 
