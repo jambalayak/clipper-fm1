@@ -97,11 +97,13 @@ static void vector_render(track_t *t, voice_t *v, int32_t *out, uint32_t n, cons
     const int16_t *wd = VEC_WAVE[(uint32_t)clamp(p[P_E3], 0, VEC_NW - 1)] + VEC_OFF[lv];
     int32_t x1, y1, x0, y0, st[4] = {v->s[0], v->s[1], v->s[2], v->s[3]}, model = fm_model(t);
     int32_t a0, b0, c0, d0, a1, b1, c1, d1, da, db, dc, dd;
+    uint32_t duck = v->fduck;
     fmod_t fm;
 #if CLIPPER_SYNTH
     if (v->fmodel != (uint8_t)model) {                /* a new model has a different state layout and scale */
         st[0] = st[1] = st[2] = st[3] = 0;
         v->fmodel = (uint8_t)model;
+        v->fduck = 256u;
     }
 #endif
     vector_point(t, v, m, n, &x1, &y1);
@@ -125,12 +127,18 @@ static void vector_render(track_t *t, voice_t *v, int32_t *out, uint32_t n, cons
         y = model == FM_SVF ? tsvf_lp(&fm.sv, y, &st[0], &st[1]) : fmod_tick(&fm, y << 1, st, st);
         if (y > 16000 || y < -16000)
             y = soft_knee(y, 16000);
+        if (duck) {
+            int32_t fade = (int32_t)(256u - duck);
+            y = (y * fade) >> 8;
+            duck--;
+        }
         out[i] += mulq15(mulq15(y << 1, amp_at(m, i)), VOICE_FS) << 1;
     }
     v->ph[0] = ph;
     v->s[0] = st[0], v->s[1] = st[1], v->s[2] = st[2], v->s[3] = st[3];
     v->s[6] = x1;
     v->s[7] = y1;
+    v->fduck = (uint16_t)duck;
 }
 
 /* waves: 0 SINE 1 TRI 2 SAW 3 SQR 4 PLS25 5 PLS10 6 ORGAN 7 VOX A 8 VOX O 9 BELL 10 HOLLW 11 BRASS 12 RESO 13 DIGI
