@@ -1,4 +1,4 @@
-# JAMESOS 50-sound bank implementation plan
+# HORATIO-1 50-sound bank implementation plan
 
 ## Source bank
 
@@ -12,7 +12,7 @@ Every source entry has a name, a Plaits engine/model label, H/T/M percentages, a
 ## Storage decision
 
 - The FM-1 user-preset store is 32 slots (two 16-record banks). It is not large enough for the 50 factory sounds and must remain available for user saves.
-- Factory sounds are compiled into engine-specific preset tables. JAMESOS should curate/replace factory entries across suitable engines or add a dedicated factory-bank presentation layer without changing the user-preset record format.
+- Factory sounds are compiled into engine-specific preset tables. HORATIO-1 should curate/replace factory entries across suitable engines or add a dedicated factory-bank presentation layer without changing the user-preset record format.
 - Keep user-created presets intact; the user has approved deleting legacy factory presets if required.
 
 ## Translation rules
@@ -33,10 +33,10 @@ The 12 user-supplied three-track combinations should be retained as reference pe
 2. [x] Preserve stable IDs, source model labels, H/T/M values and sound-design notes in the source bank.
 3. [x] Create a first-pass Clipper engine destination map for all 50 sounds.
 4. [x] Translate all 50 entries into engine-native factory preset records.
-5. [x] Add all 50 sounds to a contiguous JAMESOS category in the global factory preset browser, without changing the 32-slot user-preset store.
+5. [x] Add all 50 sounds to a contiguous HORATIO-1 category in the global factory preset browser, without changing the 32-slot user-preset store.
 6. [x] Extend the validator to check all 50 compiled factory preset labels against their engine source files.
 7. [ ] Run the full host test suite and FM-1 target build before publishing an installable firmware package.
 
 ## Current status
 
-All 50 source entries are now translated into native Clipper factory preset tables across MACRO, PHYS, ANALOG, DIGITAL, VPS, PHASE, WHEEL, VOICE, NOISE and GRAIN. The three granular sounds use Clipper's bundled synthesized PAD, GLASS and AIR sources; they do not require user-uploaded samples. The validator now checks both the 50 source records and the presence of all 50 compiled preset labels. The 50 sounds are registered as a contiguous JAMESOS category in the global factory preset browser; the existing engine filter remains available. JAMESOS synth mode defaults to four voices, while the legacy groovebox build retains eight. The latest GitHub Actions host test is running; no FM-1 target build or `.fwsc` package has yet been verified.
+All 50 source entries are now translated into native Clipper factory preset tables across MACRO, PHYS, ANALOG, DIGITAL, VPS, PHASE, WHEEL, VOICE, NOISE and GRAIN. The three granular sounds use Clipper's bundled synthesized PAD, GLASS and AIR sources; they do not require user-uploaded samples. The validator now checks both the 50 source records and the presence of all 50 compiled preset labels. The 50 sounds are registered as a contiguous HORATIO-1 category in the global factory preset browser; the existing engine filter remains available. HORATIO-1 synth mode defaults to four voices, while the legacy groovebox build retains eight. The latest GitHub Actions host test is running; no FM-1 target build or `.fwsc` package has yet been verified.
