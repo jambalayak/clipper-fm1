@@ -784,8 +784,8 @@ UI_SMALL static void graph_home(uint16_t c)
             cv_rect((int32_t)i * 6, 92, 4, h / 3, RGB(42, 35, 78));
     }
     /* restrained scanline and glass-panel details */
-    cv_rect(0, 122, 240, 1, RGB(25, 24, 43));
-    cv_text(4, 126, &FONT_S, "HORATIO-1  //  LIVE AUDIO", RGB(95, 105, 145));
+    cv_rect(0, 106, 240, 1, RGB(25, 24, 43));
+    cv_text(4, 110, &FONT_S, "HORATIO-1  //  LIVE AUDIO", RGB(95, 105, 145));
 }
 
 /* SLOOP 2.4: a page without a graph (EDIT, VOICE, the DEST pages, GLOBAL, MASTER, SYSTEM...): its values
