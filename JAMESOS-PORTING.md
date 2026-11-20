@@ -16,7 +16,7 @@ The upstream `main` branch is kept unchanged.
 
 Clipper is already a synth rather than a groovebox: its README describes 23 synthesis engines and 407 factory sounds, with no drum machine, song mode, or built-in samples. It includes a Plaits-inspired MACRO engine with four models:
 
-| ClIipper MACRO model | Sound-design role |
+| Clipper MACRO model | Sound-design role |
 | --- | --- |
 | CHORD | Four-oscillator chord voice |
 | SWARM | Eight drifting oscillators |
@@ -36,6 +36,16 @@ The supplied JAMESOS bank uses H / T / M percentages. For Clipper's MACRO engine
 The mapping is only direct for MACRO sounds. For other Clipper engines, translate the three values to the relevant engine parameters and document the result per preset. Preserve the original source values in the bank data so the port remains auditable.
 
 Clipper's HYBRID engine is a separate, fully editable three-oscillator / two-filter voice with envelopes, LFOs, and a modulation matrix. It is a strong destination for sounds whose Plaits model has no close equivalent.
+
+## Preset-bank architecture
+
+The supplied bank contains 50 sounds (17 SYNTHWAVE, 17 VAPORWAVE, 16 IDM & BRAINDANCE). Do not place these in the 32-slot user-preset store: that store is reserved for the owner's editable sounds and is persistent FM-1 storage.
+
+Clipper's factory presets are compiled into each engine's preset table. The intended implementation is to translate each source entry to a destination Clipper engine and its actual parameter schema, then curate a dedicated JAMESOS factory collection. Keep a machine-readable source manifest with the original Plaits model label, H/T/M percentages, and sound-design notes alongside the translated destination engine/parameters. This makes approximations explicit and allows later refinement without losing the user's original design.
+
+Do not simply copy H/T/M into every engine. MACRO maps H/T/M to HARM/TIMB/MORPH; other engines need a per-engine translation. Engine parameter values, envelopes, FX, and modulation must be set in the engine's native preset structure.
+
+The 12 supplied three-part combinations are performance ideas, not automatically Clipper presets: Clipper synth mode is a single instrument with an optional second layer, not a three-independent-track groovebox. Preserve the trio descriptions as reference material and only adapt them to the instrument's layer/voice architecture where the result is musically faithful. All drum lanes remain excluded.
 
 ## Safety and validation rules
 
