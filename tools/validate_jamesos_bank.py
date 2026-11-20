@@ -110,7 +110,13 @@ def main() -> int:
         if not pattern.search(source):
             raise SystemExit(f"Preset {preset_id:02d}: {label!r} missing from {filename}")
 
-    print("JAMESOS bank valid: 50 source presets and 50 compiled factory preset labels")
+    ui = (firmware / "ui.c").read_text(encoding="utf-8")
+    for preset_id, (_, label) in IMPLEMENTED.items():
+        pattern = re.compile(r'\\{\\s*BK_JAMESOS\\s*,\\s*[^,]+,\\s*"' + re.escape(label) + r'"\\s*\\}')
+        if not pattern.search(ui):
+            raise SystemExit(f"Preset {preset_id:02d}: {label!r} missing from the unified JAMESOS browser list")
+
+    print("JAMESOS bank valid: 50 source presets, 50 compiled factory presets and 50 unified browser entries")
     print("Categories: 17 Synthwave / 17 Vaporwave / 16 IDM & Braindance")
     return 0
 
