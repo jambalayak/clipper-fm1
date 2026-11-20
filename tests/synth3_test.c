@@ -192,13 +192,13 @@ static void t_unison(void)
     ok(nvoices(0) == 0, "UNI2: the note-offs let every voice go");
     frames(40);
     trk[0].p[P_VOICE] = V_PUNI4;
-    trk_note_on(&trk[0], 60, 100), trk_note_on(&trk[0], 67, 100);
+    trk_note_on(&trk[0], 60, 100);
     frames(2);
-    snprintf(w, sizeof w, "UNI4: two notes on %u voices", nvoices(0));
-    ok(nvoices(0) == 8, w);
-    trk_note_off(&trk[0], 60), trk_note_off(&trk[0], 67);
+    snprintf(w, sizeof w, "UNI4: one note uses the four-voice budget (%u)", nvoices(0));
+    ok(nvoices(0) == 4, w);
+    trk_note_off(&trk[0], 60);
     frames(2);
-    ok(nvoices(0) == 0, "UNI4: the note-offs let every voice go");
+    ok(nvoices(0) == 0, "UNI4: the note-off lets every voice go");
     trk[0].p[P_VOICE] = V_POLY;
     frames(40);
 }
