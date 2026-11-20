@@ -275,6 +275,10 @@ static const preset_t NOISE_PRESETS[] = {
     {"STATIC", {1, 20, 100, 10, 0, 90, 30, 0}, {0, 64, 127, 40}, 0, 0, FX(0, 0, 10, 30)},
     {"WHOOSH", {0, 60, 60, 90, 127, 0, 60, 0}, {60, 90, 110, 90}, 0, 0, FX(0, 20, 20, 60), XP(P_LRATE + 1, 20, P_LD_FLT + 1, 30)},
     {"TONAL NZ", {0, 64, 80, 120, 127, 0, 0, 0}, {10, 80, 110, 60}, 0, 0, FX(0, 20, 20, 50)},
+    /* JAMESOS: pitched and stochastic noise textures; synth-only, no drum voice. */
+    {"SLOWED FLUTE", {NZ_META, 40, 35, 80, 76, 38, 10, 0}, {38, 80, 110, 84}, 0, 0, FX(0, 12, 28, 52)},
+    {"MICRO GLITCH", {NZ_DUST, 80, 65, 45, 96, 110, 70, 0}, {0, 14, 0, 28}, 0, 0, FX(0, 0, 18, 24)},
+    {"STATIC GEIGER", {NZ_DUST, 60, 40, 90, 82, 18, 90, 0}, {0, 26, 0, 38}, 0, 0, FX(0, 0, 22, 30)},
 #endif
 };
 
