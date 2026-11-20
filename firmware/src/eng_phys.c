@@ -267,6 +267,13 @@ static const preset_t PHYS_PRESETS[] = {
     {"MBIRA", {0, 34, 30, 70, 90, 100, 0, 40}, {0, 100, 127, 60}, 0, 0, FX(0, 10, 20, 40)},
     {"HARPSICH", {1, 90, 110, 70, 8, 110, 0, 4}, {0, 100, 127, 40}, 0, 0, FX(0, 10, 10, 30)},
 #endif
+    /* JAMESOS: modal-resonator interpretations of the source Plaits targets. */
+    {"CRYSTAL FNT", {PM_MODAL, 55, 40, 116, 8, 88, 0, 0}, {8, 100, 127, 108}, 0, 0, FX(0, 28, 52, 82)},
+    {"POOL MARIMBA", {PM_MODAL, 35, 50, 32, 32, 100, 0, 24}, {0, 86, 127, 58}, 0, 0, FX(0, 8, 20, 36)},
+    {"CLOCK MODAL", {PM_MODAL, 62, 55, 102, 14, 96, 0, 8}, {0, 100, 127, 84}, 0, 0, FX(0, 22, 32, 58),
+     XP(P_LRATE + 1, 104, P_LD_FLT + 1, 18)},
+    {"RESON PIPE", {PM_MODAL, 30, 70, 108, 18, 80, 72, 0}, {42, 100, 127, 96}, 0, 0, FX(0, 18, 24, 62),
+     XP(P_LRATE + 1, 22, P_LD_FLT + 1, 12)},
 };
 
 static const engine_t ENG_PHYS = {
