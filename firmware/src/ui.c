@@ -634,8 +634,8 @@ UI_SMALL static void select_engine(uint32_t e)
 /* the factory presets as one list by kind (basses, keys, organs, pads, leads, plucks and bells, stabs,
  * the rest), then the used user presets: the PRESETS knob and the PRESETS page browse it. By name: an
  * engine's preset table may change order; tests/ui_pages_test.c checks every preset is here once */
-enum { BK_BASS, BK_KEYS, BK_ORGAN, BK_PAD, BK_LEAD, BK_PLUCK, BK_STAB, BK_FX };
-static const char *const BANK_KIND[] = {"BASS", "KEYS", "ORGN", "PAD", "LEAD", "PLCK", "STAB", "FX"};
+enum { BK_BASS, BK_KEYS, BK_ORGAN, BK_PAD, BK_LEAD, BK_PLUCK, BK_STAB, BK_FX, BK_JAMESOS };
+static const char *const BANK_KIND[] = {"BASS", "KEYS", "ORGN", "PAD", "LEAD", "PLCK", "STAB", "FX", "JAMESOS"};
 /* the sample-based factory sounds (SAMPLE 4, GRAIN 8): not in the Clipper synth, which has no built-in samples */
 #if CLIPPER_SYNTH
 #define BK_SMP(k, e, n)
@@ -798,6 +798,57 @@ static const struct { uint8_t kind, e; const char *name; } BANK[] = {
     {BK_PAD, ENGI_GRAIN, "DARK DRONE"}, {BK_PAD, ENGI_GRAIN, "SCAN PAD"}, {BK_PAD, ENGI_GRAIN, "WIND CHOIR"},
     {BK_FX, ENGI_GRAIN, "BREATH GRAIN"}, {BK_PAD, 4, "SAMPLE CHOIR"}, {BK_PAD, 4, "GLASS HARP"},
     {BK_PAD, 4, "SAW ENSEMBLE"}, {BK_LEAD, 4, "AIR FLUTE"},
+    /* JAMESOS: one contiguous 50-sound collection at the end of the factory browser. */
+    {BK_JAMESOS, 0, "OUTRUN SUB"},
+    {BK_JAMESOS, 0, "NIGHTCALL PWM"},
+    {BK_JAMESOS, ENGI_MACRO, "JUNO BRASS 84"},
+    {BK_JAMESOS, ENGI_VPS, "MIAMI HORIZON"},
+    {BK_JAMESOS, 0, "TURBO ARP"},
+    {BK_JAMESOS, 1, "LASER HARP"},
+    {BK_JAMESOS, 0, "CHROME LEAD"},
+    {BK_JAMESOS, ENGI_MACRO, "NEON POLY"},
+    {BK_JAMESOS, ENGI_VPS, "KAVINSKY GRWL"},
+    {BK_JAMESOS, ENGI_MACRO, "SUNSET STRINGS"},
+    {BK_JAMESOS, 1, "RETRO BELL"},
+    {BK_JAMESOS, 0, "ARCADE OCT"},
+    {BK_JAMESOS, 1, "TOM FM BASS"},
+    {BK_JAMESOS, ENGI_MACRO, "VANGELIS SWELL"},
+    {BK_JAMESOS, 2, "GRID RUNNER"},
+    {BK_JAMESOS, 0, "TAPE DETUNE"},
+    {BK_JAMESOS, ENGI_PHYS, "MIDNIGHT SKY"},
+    {BK_JAMESOS, 1, "MALLSOFT EP"},
+    {BK_JAMESOS, ENGI_MACRO, "VHS CHOIR"},
+    {BK_JAMESOS, ENGI_MACRO, "MACINTOSH PAD"},
+    {BK_JAMESOS, ENGI_PHYS, "SEAPUNK PLUCK"},
+    {BK_JAMESOS, ENGI_VPS, "MUZAK SLAP"},
+    {BK_JAMESOS, 5, "LOBBY SAX"},
+    {BK_JAMESOS, ENGI_MACRO, "ECCOJAM LOOP"},
+    {BK_JAMESOS, ENGI_PHYS, "CRYSTAL FNT"},
+    {BK_JAMESOS, 0, "FADED CASSETTE"},
+    {BK_JAMESOS, 7, "PLAZA ORGAN"},
+    {BK_JAMESOS, 1, "DREAMCAST"},
+    {BK_JAMESOS, ENGI_MACRO, "LATE NIGHT WX"},
+    {BK_JAMESOS, ENGI_PHYS, "POOL MARIMBA"},
+    {BK_JAMESOS, ENGI_GRAIN, "HYPNAGOGIC"},
+    {BK_JAMESOS, 1, "SEGA SUNSET"},
+    {BK_JAMESOS, ENGI_MACRO, "ELEVATOR CHIME"},
+    {BK_JAMESOS, ENGI_NOISE, "SLOWED FLUTE"},
+    {BK_JAMESOS, ENGI_PHYS, "CLOCK MODAL"},
+    {BK_JAMESOS, ENGI_GRAIN, "AUTECHRE GRAIN"},
+    {BK_JAMESOS, ENGI_VPS, "APHEX RUBBER"},
+    {BK_JAMESOS, ENGI_PHYS, "GLASS WIRE"},
+    {BK_JAMESOS, ENGI_NOISE, "MICRO GLITCH"},
+    {BK_JAMESOS, 0, "BOC WARP TAPE"},
+    {BK_JAMESOS, 1, "FM METAL PING"},
+    {BK_JAMESOS, ENGI_MACRO, "LIQUID FORMANT"},
+    {BK_JAMESOS, ENGI_VPS, "SQUAREPUSHER"},
+    {BK_JAMESOS, ENGI_MACRO, "INHARM BELL"},
+    {BK_JAMESOS, ENGI_GRAIN, "DATA STREAM"},
+    {BK_JAMESOS, ENGI_PHYS, "RESON PIPE"},
+    {BK_JAMESOS, 1, "ACID 303 FM"},
+    {BK_JAMESOS, ENGI_MACRO, "FRACTURED CHRD"},
+    {BK_JAMESOS, ENGI_NOISE, "STATIC GEIGER"},
+    {BK_JAMESOS, ENGI_MACRO, "SUBHARM PULSE"},
 #endif
 };
 #define NBANK (sizeof BANK / sizeof BANK[0])
