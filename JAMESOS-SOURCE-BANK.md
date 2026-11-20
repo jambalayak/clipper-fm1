@@ -1,4 +1,4 @@
-# JAMESOS source preset bank (verbatim design specification)
+# HORATIO-1 source preset bank (verbatim design specification)
 
 Instrument: M-VAVE FM-1
 Genres: SYNTHWAVE, VAPORWAVE, IDM & BRAINDANCE
