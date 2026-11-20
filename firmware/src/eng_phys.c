@@ -275,8 +275,7 @@ static const preset_t PHYS_PRESETS[] = {
      XP(P_LRATE + 1, 22, P_LD_FLT + 1, 12)},
     {"MIDNIGHT SKY", {PM_STRING, 50, 60, 75, 30, 90, 0, 0}, {0, 96, 127, 72}, 0, 0, FX(0, 28, 48, 68)},
     {"SEAPUNK PLUCK", {PM_STRING, 60, 45, 92, 40, 90, 0, 0}, {0, 82, 32, 62}, 0, 0, FX(0, 34, 32, 62)},
-    {"GLASS WIRE", {PM_STRING, 60, 80, 22, 10, 100, 0, 0}, {0, 22, 0, 52}, 0, 0, FX(0, 10, 38, 52),
-     XP(P_TRANS + 1, 12)},
+    {"GLASS WIRE", {PM_STRING, 60, 80, 22, 10, 100, 0, 0}, {0, 22, 0, 52}, 0, 0, FX(0, 10, 38, 52)},
 #endif
 };
 
