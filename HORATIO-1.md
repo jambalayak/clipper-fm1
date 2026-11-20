@@ -15,6 +15,7 @@ HORATIO-1 is a drum-free synthesizer firmware project for the M-VAVE FM-1, devel
 
 - The 50 source-bank sounds are translated into native Clipper engine factory preset records. The engine map documents the actual destination engine and compiled label for each sound.
 - The preset bank is exposed as one contiguous category in the factory browser. The compact on-device category label is `HORATIO`; the product name is HORATIO-1.
+- The HOME screen now has an original 40-band, audio-reactive visualizer with magenta/cyan/violet bars, a soft mirrored reflection, and restrained scanline detailing. It samples the existing 512-sample scope ring, so it adds no FFT workspace and does no extra work in the audio interrupt.
 - Synth mode defaults to four voices. The legacy non-synth/groovebox configuration retains its original eight-voice default.
 - The host validator checks the 50 source entries, category counts, parameter bounds, native factory preset labels, and browser entries.
 
@@ -22,7 +23,7 @@ HORATIO-1 is a drum-free synthesizer firmware project for the M-VAVE FM-1, devel
 
 - This is currently a Clipper-derived engine adaptation, not a complete Mutable Instruments Plaits port. Several source-model ideas are approximated using the available native engines.
 - Mutable Instruments Beads effects have not yet been ported.
-- The visualizer and complete vaporwave UI treatment remain planned work unless specifically marked implemented in source.
+- The full vaporwave UI treatment remains planned work. The new HOME visualizer is an initial, lightweight implementation; it is not yet the complete multi-style visualizer or a finished visual redesign.
 - The original SLOOP / Clipper lineage and upstream licensing notices remain intact.
 
 ## Build and testing
