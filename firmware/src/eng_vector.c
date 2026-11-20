@@ -129,7 +129,10 @@ static void vector_render(track_t *t, voice_t *v, int32_t *out, uint32_t n, cons
         if (y > 16000 || y < -16000)
             y = soft_knee(y, 16000);
         if (duck) {
-            int32_t fade = (int32_t)(256u - duck);
+            /* A smoothstep fade has zero slope at both ends: the linear ramp's
+             * first difference was still audible on a bright DIODE -> HP switch. */
+            int32_t q = (int32_t)(256u - duck);
+            int32_t fade = (q * q * (768 - 2 * q)) >> 16; /* Q8, 0 .. 256 */
             y = (y * fade) >> 8;
             duck--;
         }
