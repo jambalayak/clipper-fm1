@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Validate the JAMESOS source bank and its 50 compiled factory preset labels."""
+"""Validate the HORATIO-1 source bank and its 50 compiled factory preset labels."""
 from pathlib import Path
 import re
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / "JAMESOS-SOURCE-BANK.md"
+SOURCE = ROOT / "HORATIO-1-SOURCE-BANK.md"
 EXPECTED = {"SYNTHWAVE": 17, "VAPORWAVE": 17, "IDM & BRAINDANCE": 16}
 ROW = re.compile(
     r"^\|\s*(\d{2})\s*\|\s*([^|]+?)\s*\|\s*([^|]+?)\s*\|"
@@ -112,11 +112,11 @@ def main() -> int:
 
     ui = (firmware / "ui.c").read_text(encoding="utf-8")
     for preset_id, (_, label) in IMPLEMENTED.items():
-        pattern = re.compile(r'\{\s*BK_JAMESOS\s*,\s*[^,]+,\s*"' + re.escape(label) + r'"\s*\}')
+        pattern = re.compile(r'\{\s*BK_HORATIO-1\s*,\s*[^,]+,\s*"' + re.escape(label) + r'"\s*\}')
         if not pattern.search(ui):
-            raise SystemExit(f"Preset {preset_id:02d}: {label!r} missing from the unified JAMESOS browser list")
+            raise SystemExit(f"Preset {preset_id:02d}: {label!r} missing from the unified HORATIO-1 browser list")
 
-    print("JAMESOS bank valid: 50 source presets, 50 compiled factory presets and 50 unified browser entries")
+    print("HORATIO-1 bank valid: 50 source presets, 50 compiled factory presets and 50 unified browser entries")
     print("Categories: 17 Synthwave / 17 Vaporwave / 16 IDM & Braindance")
     return 0
 
