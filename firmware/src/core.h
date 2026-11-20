@@ -17,7 +17,7 @@
 static volatile uint32_t diag_late;      /* halves the DMA had already moved past: since power-on */
 static volatile uint32_t diag_peak;      /* the worst half (render + TIMER5 in it), % of its deadline, since shown */
 #ifndef NVOICE
-#define NVOICE 8                 /* voices per part, and the budget shared by all parts (Clipper: -DNVOICE=12 / 16) */
+#define NVOICE 4                 /* JAMESOS: four voices per part, and a four-voice shared budget */
 #endif
 #define NPOLY NVOICE
 #define NPART 3                  /* synth parts: tracks 1..3 */
