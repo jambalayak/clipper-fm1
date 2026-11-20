@@ -719,18 +719,17 @@ UI_SMALL static void graph_scope(uint16_t c)
     }
 }
 
-/* Clipper: HOME, the instrument: the sound's name large, its kind and place in the list, its engine; the
- * scope under it (from the top of the graph strip: cv_oy 0) */
+/* HORATIO-1 HOME: preset identity above an original, low-memory audio-reactive spectrum display.
+ * It samples the existing output scope buffer; no FFT workspace or audio-thread work is added. */
 static uint32_t preset_pos(uint32_t *total);
 static const char *preset_kind(uint32_t n);
 UI_SMALL static void graph_home(uint16_t c)
 {
-    static int16_t snap[SCOPE_N];
     char name[24], b[24];
-    uint32_t total = 0, cur = preset_pos(&total), w = scope_w, i, trig = 0;
+    uint32_t total = 0, cur = preset_pos(&total), w = scope_w, i;
     const engine_t *e = ENGINES[TSEL->eng_req % NENGINES];
     const felucca_font_t *f = &FONT_L;
-    int32_t x, py = 90, peak = 1500;
+    int32_t x, peak = 1500;
     name[0] = 0;
     if (user_of(TSEL) < UP_SLOTS)
         up_name(user_of(TSEL), name);
@@ -745,31 +744,48 @@ UI_SMALL static void graph_home(uint16_t c)
     fmt_int(b + str_len(b), (int32_t)total);
     x = cv_text(x + 8, 36, &FONT_S, b, C_GRAY);
 #if CLIPPER_SYNTH
-    if (hist_cmp_on)                                 /* (0.7) COMPARE: the sound as loaded; else edited since */
+    if (hist_cmp_on)
         cv_text(x + 8, 36, &FONT_S, "ORIG", C_AMB);
     else if (hist_edited)
         cv_text(x + 8, 36, &FONT_S, "EDITED", C_AMB);
 #endif
     cv_text(236 - text_w(&FONT_S, e->name), 36, &FONT_S, e->name, C_HI);
-    for (i = 0; i < SCOPE_N; i++) {                  /* the scope, auto-scaled, triggered on a rising zero */
-        snap[i] = scope_buf[(w + i) & (SCOPE_N - 1u)];
-        if (snap[i] > peak)
-            peak = snap[i];
-        else if (-snap[i] > peak)
-            peak = -snap[i];
+
+    /* 40 compact bands: peak-followed waveform energy, mirrored softly below the axis.
+     * The 512-sample ring is already maintained by audio.c for the existing scope. */
+    for (i = 0; i < SCOPE_N; i++) {
+        int32_t a = scope_buf[(w + i) & (SCOPE_N - 1u)];
+        if (a < 0)
+            a = -a;
+        if (a > peak)
+            peak = a;
     }
-    for (i = 1; i < SCOPE_N - 240u; i++)
-        if (snap[i - 1] < 0 && snap[i] >= 0) {
-            trig = i;
-            break;
+    for (i = 0; i < 5u; i++)
+        cv_line(0, 62 + (int32_t)i * 6, 239, 62 + (int32_t)i * 6, RGB(20, 20, 34));
+    cv_line(0, 91, 239, 91, RGB(58, 58, 78));
+    for (i = 0; i < 40u; i++) {
+        uint32_t j, start = (w + i * (SCOPE_N / 40u)) & (SCOPE_N - 1u);
+        int32_t level = 0, h, y;
+        uint16_t col = (i % 3u == 0u) ? RGB(245, 35, 190) :
+                       (i % 3u == 1u) ? RGB(0, 220, 235) : RGB(125, 75, 255);
+        for (j = 0; j < SCOPE_N / 40u; j++) {
+            int32_t a = scope_buf[(start + j) & (SCOPE_N - 1u)];
+            if (a < 0)
+                a = -a;
+            if (a > level)
+                level = a;
         }
-    cv_line(0, 90, 239, 90, C_LINE);
-    for (x = 0; x < 240; x++) {
-        int32_t y = 90 - snap[trig + (uint32_t)x] * 30 / peak;
-        if (x)
-            cv_line(x - 1, py, x, y, c);
-        py = y;
+        h = level * 27 / peak;
+        if (h < 1)
+            h = 1;
+        y = 90 - h;
+        cv_rect((int32_t)i * 6, y, 4, h, col);
+        if (h > 3)
+            cv_rect((int32_t)i * 6, 92, 4, h / 3, RGB(42, 35, 78));
     }
+    /* restrained scanline and glass-panel details */
+    cv_rect(0, 122, 240, 1, RGB(25, 24, 43));
+    cv_text(4, 126, &FONT_S, "HORATIO-1  //  LIVE AUDIO", RGB(95, 105, 145));
 }
 
 /* SLOOP 2.4: a page without a graph (EDIT, VOICE, the DEST pages, GLOBAL, MASTER, SYSTEM...): its values
