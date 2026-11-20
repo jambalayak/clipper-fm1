@@ -1276,7 +1276,7 @@ static void vs_finish(track_t *t, const engine_t *e, int32_t *out, uint32_t n)
 static int32_t uni_level(const track_t *t)
 {
     uint32_t vm = voice_mode(t);
-    return vm == V_UNISON ? (trk_nvoice(t) >= NVOICE ? 11796 : 16384) : vm == V_PUNI4 ? 16384 : vm == V_PUNI2 ? 22938 : 32767;
+    return vm == V_UNISON ? (trk_nvoice(t) >= NVOICE ? 11796 : 16384) : vm == V_PUNI4 ? 15000 : vm == V_PUNI2 ? 22938 : 32767;
 }
 #endif
 static uint32_t track_render(track_t *t, int32_t *out, uint32_t n)
