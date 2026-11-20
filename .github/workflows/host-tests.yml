@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - horatio1-development
+      - jamesos-development
   pull_request:
     branches:
       - main
@@ -31,7 +31,7 @@ jobs:
       - name: Install generator dependency
         run: python -m pip install --upgrade Pillow
       - name: Validate the HORATIO-1 source bank
-        run: python tools/validate_horatio1_bank.py
+        run: python tools/validate_jamesos_bank.py
       - name: Run host test suite
         env:
           HOST_ONLY: '1'
