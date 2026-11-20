@@ -1,0 +1,65 @@
+name: JAMESOS FM-1 target build
+
+on:
+  push:
+    branches: [jamesos-development]
+    paths:
+      - "firmware/**"
+      - "tools/**"
+      - "assets/**"
+      - "build.sh"
+      - ".github/workflows/jamesos-target-build.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: jamesos-target-build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y git curl xz-utils
+          python -m pip install --upgrade pip Pillow
+
+      - name: Install JieLi toolchain
+        run: tools/get_toolchain.sh "$HOME/.jieli"
+
+      - name: Fetch tested AC79 SDK
+        run: |
+          git clone --depth 1 --branch AC79NN_SDK_V1.2.1_2023-12-13 \
+            https://gitee.com/Jieli-Tech/fw-AC79_AIoT_SDK.git \
+            "$HOME/fw-AC79_AIoT_SDK"
+
+      - name: Build FM-1 firmware and install package
+        env:
+          JIELI_TOOLCHAIN: ${{ runner.temp }}/../.jieli/toolchain
+          AC79_SDK: ${{ runner.temp }}/../fw-AC79_AIoT_SDK
+        run: |
+          export JIELI_TOOLCHAIN="$HOME/.jieli/toolchain"
+          export AC79_SDK="$HOME/fw-AC79_AIoT_SDK"
+          ./build.sh
+
+      - name: Upload installable package and build images
+        uses: actions/upload-artifact@v4
+        with:
+          name: jamesos-fm1-firmware
+          if-no-files-found: error
+          path: |
+            build/felucca.fwsc
+            build/felucca.bin
+            build/loader/ota.bin
