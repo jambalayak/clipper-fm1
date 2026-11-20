@@ -26,6 +26,8 @@ jobs:
           node-version: '22'
       - name: Install generator dependency
         run: python -m pip install --upgrade Pillow
+      - name: Validate the JAMESOS source bank
+        run: python tools/validate_jamesos_bank.py
       - name: Run host test suite
         env:
           HOST_ONLY: '1'
