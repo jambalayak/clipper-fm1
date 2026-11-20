@@ -38,4 +38,4 @@ The 12 user-supplied three-track combinations should be retained as reference pe
 
 ## Current status
 
-The complete source bank and trio reference are now committed. The JAMESOS bank validator passed in GitHub Actions. A first-pass engine map is committed, with GRAIN presets explicitly marked as needing user sample sources. Firmware factory presets have not yet been changed; the next major task is engine-native patch programming and integration.
+The complete source bank and trio reference are now committed. The JAMESOS bank validator passed in GitHub Actions. A first-pass engine map is committed, with GRAIN presets explicitly marked as needing user sample sources. The first 10 JAMESOS sounds are now compiled into `MACRO_PRESETS` in `firmware/src/eng_macro.c`. Their H/T/M values map to native HARM/TIMB/MORPH controls; model, envelope, filter and FX values are translated to Clipper's schema. The remaining 40 sounds still need engine-native programming. The latest host-test workflow is running against this change; no FM-1 target build or `.fwsc` package has been verified.
