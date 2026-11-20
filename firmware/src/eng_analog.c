@@ -12,7 +12,9 @@ static void analog_note_on(track_t *t, voice_t *v)
     v->ph[1] = v->ph[0] + 0x40000000u;
     v->s[0] = v->s[1] = 0;                            /* filter */
     v->s[3] = v->s[4] = v->s[5] = v->s[6] = 0;        /* (MOOG: the ladder's four stages) */
+#if CLIPPER_SYNTH
     v->s[7] = (-2147483647 - 1);                       /* BRITE macro: initialise its short cutoff glide */
+#endif
     if (!v->s[2])
         v->s[2] = 0x1234567 + (int32_t)v->age;        /* noise state */
 }
@@ -22,6 +24,7 @@ static void analog_render(track_t *t, voice_t *v, int32_t *out, uint32_t n, cons
     const int16_t *p = t->p;
     uint32_t wave = (uint32_t)p[P_E0], i;
     int32_t det = p[P_E1], mix = p[P_E2], noise = p[P_E3];
+#if CLIPPER_SYNTH
     int32_t mac = clamp(p[P_MAC1], -64, 63) * 160;
     int32_t target = mac, cut;
     if (v->s[7] == (-2147483647 - 1))
@@ -29,6 +32,9 @@ static void analog_render(track_t *t, voice_t *v, int32_t *out, uint32_t n, cons
     else
         v->s[7] += (target - v->s[7]) >> 3;           /* 5.8 ms time constant: smooth BRITE without dulling the envelope */
     cut = (p[P_E4] << 8) + m->cutoff - mac + v->s[7] + (p[P_E7] * (v->pitch16 - 60 * 16) >> 4);
+#else
+    int32_t cut = (p[P_E4] << 8) + m->cutoff + (p[P_E7] * (v->pitch16 - 60 * 16) >> 4);
+#endif
     fmod_t fm;                                                   /* Clipper: the filter MODEL (P_FMODEL, dsp.c) */
     int32_t model = fm_model(t);
     int32_t drive = 32768 + p[P_E6] * 768;                       /* 1x .. 4x */
