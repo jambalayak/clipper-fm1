@@ -110,6 +110,28 @@ def main() -> int:
         if not pattern.search(source):
             raise SystemExit(f"Preset {preset_id:02d}: {label!r} missing from {filename}")
 
+    # For MACRO presets, prove the source H/T/M percentages were carried into
+    # the native engine's HARM/TIMB/MORPH values (0..127), rounded to nearest.
+    source_by_id = {entry[0]: entry for entry in entries}
+    macro_source = (firmware / "eng_macro.c").read_text(encoding="utf-8")
+    for preset_id, (filename, label) in IMPLEMENTED.items():
+        if filename != "eng_macro.c":
+            continue  # Other engines have different native parameter scales.
+        expected = [(value * 127 + 50) // 100 for value in source_by_id[preset_id][3]]
+        pattern = re.compile(
+            r'\\{\\s*"' + re.escape(label) +
+            r'"\\s*,\\s*\\{\\s*\\d+\\s*,\\s*(\\d+)\\s*,\\s*(\\d+)\\s*,\\s*(\\d+)'
+        )
+        match = pattern.search(macro_source)
+        if not match:
+            raise SystemExit(f"Preset {preset_id:02d}: could not read native H/T/M values for {label!r}")
+        actual = [int(value) for value in match.groups()]
+        if actual != expected:
+            raise SystemExit(
+                f"Preset {preset_id:02d}: native H/T/M {actual} do not match source percentages "
+                f"{source_by_id[preset_id][3]} (expected {expected})"
+            )
+
     ui = (firmware / "ui.c").read_text(encoding="utf-8")
     for preset_id, (_, label) in IMPLEMENTED.items():
         pattern = re.compile(r'\{\s*BK_HORATIO1\s*,\s*[^,]+,\s*"' + re.escape(label) + r'"\s*\}')
