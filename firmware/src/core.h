@@ -18,7 +18,7 @@ static volatile uint32_t diag_late;      /* halves the DMA had already moved pas
 static volatile uint32_t diag_peak;      /* the worst half (render + TIMER5 in it), % of its deadline, since shown */
 #ifndef NVOICE
 #if CLIPPER_SYNTH
-#define NVOICE 4                 /* JAMESOS: four voices per part, and a four-voice shared budget */
+#define NVOICE 4                 /* HORATIO-1: four voices per part, and a four-voice shared budget */
 #else
 #define NVOICE 8                 /* preserve SLOOP / groovebox's original eight-voice default */
 #endif
