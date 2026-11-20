@@ -1,11 +1,11 @@
-# JAMESOS porting notes
+# HORATIO-1 porting notes
 
-This branch is the working branch for the JAMESOS FM-1 firmware adaptation.
+This branch is the working branch for the HORATIO-1 FM-1 firmware adaptation.
 The upstream `main` branch is kept unchanged.
 
 ## Product direction
 
-- Name the finished firmware JAMESOS.
+- Name the finished firmware HORATIO-1.
 - Keep the Clipper synthesizer as the technical base.
 - No drum machine, drum tracks, drum lanes, or drum presets in the finished instrument.
 - Build a 50-sound bank: SYNTHWAVE 01–17, VAPORWAVE 18–34, IDM & BRAINDANCE 35–50.
@@ -27,7 +27,7 @@ This is not the complete Mutable Instruments Plaits engine set. Preset labels th
 
 ## Preset translation
 
-The supplied JAMESOS bank uses H / T / M percentages. For Clipper's MACRO engine, the closest direct mapping is:
+The supplied HORATIO-1 bank uses H / T / M percentages. For Clipper's MACRO engine, the closest direct mapping is:
 
 - H → HARM
 - T → TIMB
@@ -41,7 +41,7 @@ Clipper's HYBRID engine is a separate, fully editable three-oscillator / two-fil
 
 The supplied bank contains 50 sounds (17 SYNTHWAVE, 17 VAPORWAVE, 16 IDM & BRAINDANCE). Do not place these in the 32-slot user-preset store: that store is reserved for the owner's editable sounds and is persistent FM-1 storage.
 
-Clipper's factory presets are compiled into each engine's preset table. The intended implementation is to translate each source entry to a destination Clipper engine and its actual parameter schema, then curate a dedicated JAMESOS factory collection. Keep a machine-readable source manifest with the original Plaits model label, H/T/M percentages, and sound-design notes alongside the translated destination engine/parameters. This makes approximations explicit and allows later refinement without losing the user's original design.
+Clipper's factory presets are compiled into each engine's preset table. The intended implementation is to translate each source entry to a destination Clipper engine and its actual parameter schema, then curate a dedicated HORATIO-1 factory collection. Keep a machine-readable source manifest with the original Plaits model label, H/T/M percentages, and sound-design notes alongside the translated destination engine/parameters. This makes approximations explicit and allows later refinement without losing the user's original design.
 
 Do not simply copy H/T/M into every engine. MACRO maps H/T/M to HARM/TIMB/MORPH; other engines need a per-engine translation. Engine parameter values, envelopes, FX, and modulation must be set in the engine's native preset structure.
 
@@ -59,11 +59,11 @@ The 12 supplied three-part combinations are performance ideas, not automatically
 ## Current implementation status
 
 - Base: Clipper 1.3.1; working branch: `jamesos-development`; upstream `main` remains untouched.
-- JAMESOS synth mode defaults to four voices, matching the agreed polyphony budget; the non-synth SLOOP/groovebox build keeps its original eight-voice default. The build script accepts explicit 4/8/12/16 voice overrides.
-- All 50 JAMESOS sounds now have native Clipper factory preset records across MACRO, PHYS, ANALOG, DIGITAL, VPS, PHASE, WHEEL, VOICE, NOISE and GRAIN. See `JAMESOS-ENGINE-MAP.md` for the exact compiled label for every source-bank ID.
+- HORATIO-1 synth mode defaults to four voices, matching the agreed polyphony budget; the non-synth SLOOP/groovebox build keeps its original eight-voice default. The build script accepts explicit 4/8/12/16 voice overrides.
+- All 50 HORATIO-1 sounds now have native Clipper factory preset records across MACRO, PHYS, ANALOG, DIGITAL, VPS, PHASE, WHEEL, VOICE, NOISE and GRAIN. See `HORATIO-1-ENGINE-MAP.md` for the exact compiled label for every source-bank ID.
 - MACRO H/T/M maps directly to HARM/TIMB/MORPH. Other engines use their own parameter semantics, envelopes and FX rather than blind H/T/M copying. These are Clipper-native translations, not a full Mutable Instruments Plaits port.
 - The three GRAIN presets use Clipper's bundled synthesized PAD, GLASS and AIR sample sets (source indices 6, 5 and 7), so no user-uploaded audio is required.
 - The new entries are guarded by `CLIPPER_SYNTH` where the engine is also present in the groovebox build, preserving the legacy non-synth preset table.
-- `firmware/src/ui.c` now exposes the 50 presets as one contiguous `JAMESOS` category in the global factory preset browser, in original ID order; the engine filter remains available.
+- `firmware/src/ui.c` now exposes the 50 presets as one contiguous `HORATIO-1` category in the global factory preset browser, in original ID order; the engine filter remains available.
 - The source-bank validator checks all 50 compiled preset labels and all 50 unified browser entries as well as source IDs, category counts and H/T/M bounds.
 - GitHub Actions is running the host suite for the first preset commit. The `.fwsc` target build/package is still pending.
