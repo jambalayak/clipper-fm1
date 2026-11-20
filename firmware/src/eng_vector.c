@@ -29,7 +29,7 @@ static const uint16_t VEC_OFF[3] = {0, 512, 640};
 
 static void vector_note_on(track_t *t, voice_t *v)
 {
-    (void)t;
+    v->fmodel = (uint8_t)fm_model(t);
     v->ph[1] = 0;
     v->s[4] = v->s[5] = 0;
     v->s[6] = -1;
@@ -98,6 +98,10 @@ static void vector_render(track_t *t, voice_t *v, int32_t *out, uint32_t n, cons
     int32_t x1, y1, x0, y0, st[4] = {v->s[0], v->s[1], v->s[2], v->s[3]}, model = fm_model(t);
     int32_t a0, b0, c0, d0, a1, b1, c1, d1, da, db, dc, dd;
     fmod_t fm;
+    if (v->fmodel != (uint8_t)model) {                /* a new model has a different state layout and scale */
+        st[0] = st[1] = st[2] = st[3] = 0;
+        v->fmodel = (uint8_t)model;
+    }
     vector_point(t, v, m, n, &x1, &y1);
     x0 = v->s[6] < 0 ? x1 : v->s[6], y0 = v->s[6] < 0 ? y1 : v->s[7];
     /* the corners' weights at the block's start and end, Q14 (their sum 16384): ramped over the block */
