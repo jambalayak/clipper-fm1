@@ -248,6 +248,7 @@ typedef struct {
     int16_t vdrift, vdtgt;       /* (0.9) VINTAGE: the voice's slow pitch drift now, and where it goes (Q15) */
     uint8_t ch;                  /* the MIDI channel its note came on (MPE: its own bend, pressure, slide) */
     uint8_t fmodel;              /* VECTOR: filter model owning s[0..3], so incompatible states are never reused */
+    uint16_t fduck;             /* VECTOR: 256-sample fade-in after a live filter-model change */
 #endif
 } voice_t;
 
