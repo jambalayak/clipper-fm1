@@ -29,9 +29,7 @@ static const uint16_t VEC_OFF[3] = {0, 512, 640};
 
 static void vector_note_on(track_t *t, voice_t *v)
 {
-#if CLIPPER_SYNTH
-    v->fmodel = (uint8_t)fm_model(t);
-#endif
+    (void)t;
     v->ph[1] = 0;
     v->s[4] = v->s[5] = 0;
     v->s[6] = -1;
