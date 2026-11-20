@@ -119,6 +119,15 @@ static const preset_t VPS_PRESETS[] = {
     {"VPS BELL", {90, 100, 0, 90, 127, 0, 80, 0}, {0, 90, 0, 90}, 0, 0, FX(0, 0, 20, 60)},
     {"WOBBLE VPS", {30, 48, 0, 0, 90, 30, 0, 80}, {0, 80, 110, 30}, 0, 1, FX(20, 0, 0, 10), XP(P_LRATE + 1, 70, P_LD_SHP + 1, 50)},
     {"VPS CHOIR", {64, 80, 10, 100, 96, 10, 40, 0}, {80, 100, 120, 100}, 0, 0, FX(0, 30, 10, 70), XP(P_LRATE + 1, 25, P_LD_SHP + 1, 8)},
+    /* JAMESOS: vector phaseshaping approximations of the source wavefolder/waveshaping voices. */
+    {"MIAMI HORIZON", {50, 65, 18, 40, 82, 12, 10, 0}, {48, 92, 112, 94}, 14, 0, FX(0, 24, 28, 78)},
+    {"KAVINSKY GRWL", {25, 75, 42, 82, 38, 82, 16, 30}, {0, 76, 18, 28}, 42, 1, FX(18, 0, 12, 18),
+     XP(P_TRANS + 1, -12)},
+    {"MUZAK SLAP", {25, 45, 18, 35, 58, 30, 0, 16}, {0, 68, 28, 34}, 26, 1, FX(0, 8, 14, 22)},
+    {"APHEX RUBBER", {25, 70, 40, 62, 42, 82, 12, 32}, {0, 72, 22, 24}, 38, 1, FX(12, 0, 18, 20),
+     XP(P_LRATE + 1, 92, P_LD_FLT + 1, 34, P_TRANS + 1, -12)},
+    {"SQUAREPUSHER", {20, 65, 48, 64, 36, 76, 10, 100}, {0, 74, 12, 22}, 40, 1, FX(18, 0, 12, 12),
+     XP(P_TRANS + 1, -24)},
 };
 
 /* (after Clipper 1.2) UNISON (voice.c unison_spread): oscillators 1, 2 (DTN up) and the sub moved by r (Q32)
