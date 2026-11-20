@@ -229,6 +229,9 @@ static const preset_t FORMANT_PRESETS[] = {
     {"ROBO VOX", {64, 10, 40, 0, 127, 0, 100, 0}, {2, 70, 110, 30}, 0, 0, FX(0, 30, 10, 30)},
     {"AAH LEAD", {0, 0, 0, 0, 90, 10, 70, 0}, {4, 70, 115, 40}, 0, 1, FX(0, 10, 26, 30), XP(P_MWDST + 1, MD_VIB, P_GLIDE + 1, 30)},
     {"UH BASS", {110, 0, 0, 0, 110, 0, 80, 0}, {0, 70, 90, 25}, 0, 1, FX(0, 0, 0, 6), XP(P_TRANS + 1, -12)},
+    /* JAMESOS: breathy, reedy vowel synthesis. */
+    {"LOBBY SAX", {72, 18, 12, 0, 92, 28, 78, 8}, {18, 82, 96, 56}, 0, 0, FX(0, 18, 24, 44),
+     XP(P_LRATE + 1, 76, P_LD_PIT + 1, 1)},
 #endif
 };
 
