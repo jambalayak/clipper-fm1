@@ -119,8 +119,8 @@ def main() -> int:
             continue  # Other engines have different native parameter scales.
         expected = [(value * 127 + 50) // 100 for value in source_by_id[preset_id][3]]
         pattern = re.compile(
-            r'\\{\\s*"' + re.escape(label) +
-            r'"\\s*,\\s*\\{\\s*\\d+\\s*,\\s*(\\d+)\\s*,\\s*(\\d+)\\s*,\\s*(\\d+)'
+            r'\{\s*"' + re.escape(label) +
+            r'"\s*,\s*\{\s*\d+\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)'
         )
         match = pattern.search(macro_source)
         if not match:
