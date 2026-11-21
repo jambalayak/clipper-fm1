@@ -1,13 +1,13 @@
-# HORATIO-1 50-sound bank implementation plan
+# HORATIO-1 curated factory-bank implementation plan
 
 ## Source bank
 
-The user supplied 50 sounds on 2026-11-20:
+The user supplied 50 sound concepts on 2026-11-20:
 - 01–17: SYNTHWAVE
 - 18–34: VAPORWAVE
 - 35–50: IDM & BRAINDANCE
 
-Every source entry has a name, a Plaits engine/model label, H/T/M percentages, and filter/envelope/LFO design notes. Preserve those source values verbatim in a manifest before translating them.
+Every source entry has a name, a Plaits engine/model label, H/T/M percentages, and filter/envelope/LFO design notes. Preserve original IDs and source values in a manifest; five overlapping concepts are now retired from the curated factory bank.
 
 ## Storage decision
 
@@ -32,11 +32,11 @@ The 12 user-supplied three-track combinations should be retained as reference pe
 1. [x] Recover and check in the exact 50 source entries and 12 trio templates.
 2. [x] Preserve stable IDs, source model labels, H/T/M values and sound-design notes in the source bank.
 3. [x] Create a first-pass Clipper engine destination map for all 50 sounds.
-4. [x] Translate all 50 entries into engine-native factory preset records.
-5. [x] Add all 50 sounds to a contiguous HORATIO-1 category in the global factory preset browser, without changing the 32-slot user-preset store.
-6. [x] Extend the validator to check all 50 compiled factory preset labels against their engine source files.
+4. [x] Translate the 45 retained entries into engine-native factory preset records.
+5. [x] Add the 45 retained sounds to a contiguous HORATIO-1 category in the global factory preset browser, without changing the 32-slot user-preset store.
+6. [x] Extend the validator to check all 45 active factory preset labels against their engine source files.
 7. [ ] Run the full host test suite and FM-1 target build before publishing an installable firmware package.
 
 ## Current status
 
-All 50 source entries are now translated into native Clipper factory preset tables across MACRO, PHYS, ANALOG, DIGITAL, VPS, PHASE, WHEEL, VOICE, NOISE and GRAIN. The three granular sounds use Clipper's bundled synthesized PAD, GLASS and AIR sources; they do not require user-uploaded samples. The validator now checks both the 50 source records and the presence of all 50 compiled preset labels. The 50 sounds are registered as a contiguous HORATIO-1 category in the global factory preset browser; the existing engine filter remains available. HORATIO-1 synth mode defaults to four voices, while the legacy groovebox build retains eight. The latest GitHub Actions host test is running; no FM-1 target build or `.fwsc` package has yet been verified.
+The 45 retained source entries are translated into native Clipper factory preset tables across MACRO, PHYS, ANALOG, DIGITAL, VPS, PHASE, WHEEL, VOICE, NOISE and GRAIN. The three granular sounds use Clipper's bundled synthesized PAD, GLASS and AIR sources; they do not require user-uploaded samples. The validator now checks the 45 active source records and the presence of all 45 active compiled preset labels. The 45 retained sounds are registered as a contiguous HORATIO-1 category in the global factory preset browser; the existing engine filter remains available. HORATIO-1 synth mode defaults to four voices, while the legacy groovebox build retains eight. Five overlapping factory sounds (IDs 11, 14, 29, 33 and 39) have been retired from the browser and curated manifest. Their engine-native records remain dormant to preserve engine preset indices. The host test and target build must be rerun against this 45-sound bank before an installable `.fwsc` package is considered verified.
