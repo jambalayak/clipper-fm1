@@ -419,7 +419,7 @@ static void unison_spread(track_t *t, voice_t *v, uint32_t r)
         lofi_spread(t, v, r);
     else if (e == &ENG_TRIO)
         trio_spread(t, v, r);
-    else if (e == &ENG_JUNO) {                      /* DCO and octave sub; keep their relative phase */
+    else if (t->engine == ENGI_JUNO) {             /* DCO and octave sub; keep their relative phase */
         v->ph[0] += r;
         v->ph[1] += r >> 1;
         v->ph[2] ^= r;
