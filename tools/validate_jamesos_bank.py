@@ -51,7 +51,7 @@ IMPLEMENTED = {
     35: ("eng_phys.c", "CLOCK MODAL"),
     36: ("eng_grain.c", "AUTECHRE GRAIN"),
     37: ("eng_vps.c", "APHEX RUBBER"),
-    38: ("eng_phys.c", "GLASS WIRE"),
+    38: ("eng_phys.c", "GLASS BELL"),
     39: ("eng_noise.c", "MICRO GLITCH"),
     40: ("eng_analog.c", "BOC WARP TAPE"),
     41: ("eng_digital.c", "FM METAL PING"),
