@@ -17,6 +17,8 @@ HORATIO-1 is a drum-free synthesizer firmware project for the M-VAVE FM-1, devel
 - The preset bank is exposed as one contiguous category in the factory browser. The compact on-device category label is `HORATIO`; the product name is HORATIO-1.
 - The HOME screen now has an original 40-band, audio-reactive visualizer with magenta/cyan/violet bars, a soft mirrored reflection, and restrained scanline detailing. It samples the existing 512-sample scope ring, so it adds no FFT workspace and does no extra work in the audio interrupt.
 - Synth mode defaults to four voices. The legacy non-synth/groovebox configuration retains its original eight-voice default.
+- The LOFI engine is not compiled into the HORATIO-1 synth build; its historical engine-number slot remains reserved as a harmless compatibility placeholder so later engine IDs do not shift. The original non-synth/groovebox build retains LOFI.
+- Preset 38 is now GLASS BELL, a modal-resonator replacement for the low-note tuning-unstable GLASS WIRE string patch; the PHYS engine and its other string models remain available.
 - The host validator checks the 50 source entries, category counts, parameter bounds, native factory preset labels, and browser entries.
 
 ## Important scope and accuracy notes
