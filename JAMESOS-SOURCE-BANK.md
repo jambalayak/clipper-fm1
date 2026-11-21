@@ -6,7 +6,7 @@ Drums: none
 
 Each entry preserves the requested source Plaits label, H/T/M percentages and sound-design notes. These are design targets, not claims that Clipper already implements every named Plaits model.
 
-## SYNTHWAVE (01–17)
+## SYNTHWAVE (01–17; five retired IDs retained as gaps)
 
 | # | Name | Plaits Engine | H / T / M (%) | Filter, Env & LFO Notes |
 |---:|---|---|---:|---|
@@ -20,15 +20,13 @@ Each entry preserves the requested source Plaits label, H/T/M percentages and so
 | 08 | Neon Poly | Chords | 60 / 40 / 50 | Major 9th chord; medium filter cutoff (45%) with warm envelope |
 | 09 | Kavinsky Growl | Wavefolder | 25 / 75 / 60 | Aggressive folded bass; LP cutoff 35% with high env depth |
 | 10 | Sunset Strings | Additive | 45 / 50 / 65 | Slow attack (45%), long release (65%); LFO 2 slow sweep on Morph |
-| 11 | Retrowave Bell | Two-Op FM | 75 / 55 / 15 | Classic 80s DX-style chime; long decay (60%) |
 | 12 | Arcade Octaver | Virtual Analog | 50 / 50 / 10 | Locked 1-octave spread; punchy envelope for bass/lead doubling |
 | 13 | Analog Tom-Bass | Two-Op FM | 40 / 60 / 20 | Pitch envelope drop on attack; hybrid percussive synth bass |
-| 14 | Vangelis Swell | Harmonic Osc | 55 / 45 / 70 | Slow filter + amp swell (50%); heavy reverb for cinematic pads |
 | 15 | Grid Runner | Phase Distortion | 35 / 65 / 50 | Resonant digital saw; tight 16th-note decay |
 | 16 | Tape Detune Keys | Virtual Analog | 42 / 38 / 30 | LP 40%; LFO 1 triangle gently detuning pitch |
 | 17 | Midnight Skyline | String (Karplus) | 50 / 60 / 75 | Bright plucked synth-guitar; stereo delay |
 
-## VAPORWAVE (18–34)
+## VAPORWAVE (18–34; five retired IDs retained as gaps)
 
 | # | Name | Plaits Engine | H / T / M (%) | Filter, Env & LFO Notes |
 |---:|---|---|---:|---|
@@ -43,14 +41,12 @@ Each entry preserves the requested source Plaits label, H/T/M percentages and so
 | 26 | Faded Cassette | Virtual Analog | 40 / 25 / 50 | Heavily low-passed (28%); irregular LFO pitch flutter |
 | 27 | Plaza Organ | Harmonic Osc | 60 / 35 / 45 | Warm drawbar-style organ; zero attack, medium release |
 | 28 | Dreamcast Menu | Two-Op FM | 80 / 40 / 25 | Airy glassy bell pad; slow attack (35%), high reverb |
-| 29 | Late Night Weather | Chords | 70 / 30 / 50 | Suspended 4th / 11th jazz chord; soft filter cutoff (42%) |
 | 30 | Poolside Marimba | Modal Resonator | 35 / 50 / 30 | Warm wooden mallet tone; short decay (28%) |
 | 31 | Hypnagogic Drift | Granular Cloud | 45 / 30 / 70 | Soft, smeared harmonic cloud; slow LFO on Harmonics |
 | 32 | Sega Sunset | Two-Op FM | 50 / 45 / 35 | Warm 16-bit FM brass/pad hybrid; medium attack |
-| 33 | Elevator Chime | Additive | 70 / 45 / 20 | Delicate high-harmonic bell; long release (65%) |
 | 34 | Slowed Flute | Particle Noise | 40 / 35 / 80 | Pitched airy noise resonance; soft attack (30%) |
 
-## IDM & BRAINDANCE (35–50)
+## IDM & BRAINDANCE (35–50; five retired IDs retained as gaps)
 
 | # | Name | Plaits Engine | H / T / M (%) | Filter, Env & LFO Notes |
 |---:|---|---|---:|---|
@@ -58,7 +54,6 @@ Each entry preserves the requested source Plaits label, H/T/M percentages and so
 | 36 | Autechre Grain | Granular Cloud | 70 / 60 / 50 | Scattered micro-grains; LFO 2 (Fast S&H) to Timbre + cond. trigs |
 | 37 | Aphex Rubber | Waveshaping | 25 / 70 / 65 | Squelchy acid bass; Res 70%, S&H LFO modulating Filter Cutoff |
 | 38 | Glass Bell | Modal Resonator | 75 / 80 / 35 | Bright, inharmonic glass-bell strike; short decay and subtle random timbre movement |
-| 39 | Micro-Glitch Dust | Particle Noise | 80 / 65 / 45 | Crackling pitched impulses; ultra-short amp decay (10%) |
 | 40 | BoC Warped Tape | Virtual Analog | 45 / 35 / 55 | Nostalgic detuned saw; LFO 1 slow S&H/Triangle pitch drift |
 | 41 | FM Metallic Ping | Two-Op FM | 88 / 70 / 60 | Non-integer FM ratio; razor-sharp transient (Attack 0, Decay 15%) |
 | 42 | Liquid Formant | Formant / Vowel | 55 / 75 / 50 | Squelchy vocal-filter sweep; fast LFO 1 modulating Morph |
