@@ -386,7 +386,7 @@ static void voice_start(track_t *t, voice_t *v, uint32_t note, uint32_t vel, int
             v->s[4] = s4;
         }
 #endif
-        } else if (e == &ENG_TRIO) {
+        else if (e == &ENG_TRIO) {
             v->s[0] = s0;                               /* filter */
             v->s[1] = s1;
             v->s[4] = s4;                               /* the sample waiting for its step corrections */
