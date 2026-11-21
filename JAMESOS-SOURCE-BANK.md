@@ -57,7 +57,7 @@ Each entry preserves the requested source Plaits label, H/T/M percentages and so
 | 35 | Clockwork Modal | Modal Resonator | 62 / 55 / 40 | Inharmonic metallic pluck; LFO 1 (S&H, 1/16) to Harmonics & Morph |
 | 36 | Autechre Grain | Granular Cloud | 70 / 60 / 50 | Scattered micro-grains; LFO 2 (Fast S&H) to Timbre + cond. trigs |
 | 37 | Aphex Rubber | Waveshaping | 25 / 70 / 65 | Squelchy acid bass; Res 70%, S&H LFO modulating Filter Cutoff |
-| 38 | Glass Wire | String (Karplus) | 75 / 80 / 35 | High-tension metallic string; short decay (18%), S&H on Timbre |
+| 38 | Glass Bell | Modal Resonator | 75 / 80 / 35 | Bright, inharmonic glass-bell strike; short decay and subtle random timbre movement |
 | 39 | Micro-Glitch Dust | Particle Noise | 80 / 65 / 45 | Crackling pitched impulses; ultra-short amp decay (10%) |
 | 40 | BoC Warped Tape | Virtual Analog | 45 / 35 / 55 | Nostalgic detuned saw; LFO 1 slow S&H/Triangle pitch drift |
 | 41 | FM Metallic Ping | Two-Op FM | 88 / 70 / 60 | Non-integer FM ratio; razor-sharp transient (Attack 0, Decay 15%) |
