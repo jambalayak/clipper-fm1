@@ -379,9 +379,13 @@ static void voice_start(track_t *t, voice_t *v, uint32_t note, uint32_t vel, int
             v->s[6] = s6;
             v->s[7] = s7;                               /* op 4 phase; the modulator envelope restarts */
             v->s[3] = s3;                               /* (0.9) the index glides there from where it was */
-        } else if (e == &ENG_LOFI) {
+        }
+#if !CLIPPER_SYNTH
+        else if (e == &ENG_LOFI) {
             v->s[0] = s0;
             v->s[4] = s4;
+        }
+#endif
         } else if (e == &ENG_TRIO) {
             v->s[0] = s0;                               /* filter */
             v->s[1] = s1;
@@ -415,8 +419,10 @@ static void unison_spread(track_t *t, voice_t *v, uint32_t r)
         digital_spread(t, v, r);
     else if (e == &ENG_PHASE)
         phase_spread(t, v, r);
+    #if !CLIPPER_SYNTH
     else if (e == &ENG_LOFI)
         lofi_spread(t, v, r);
+    #endif
     else if (e == &ENG_TRIO)
         trio_spread(t, v, r);
     else if (e == &ENG_NOISE)
@@ -1225,7 +1231,7 @@ static int vs_ok(const engine_t *e)                 /* its render may run on two
 {
     return e == &ENG_HYBRID || e == &ENG_FMX || e == &ENG_WAVE || e == &ENG_ANALOG || e == &ENG_FM6 || e == &ENG_VPS ||
            e == &ENG_TERRAIN || e == &ENG_WSEQ || e == &ENG_MACRO || e == &ENG_STRINGS || e == &ENG_TRIO ||
-           e == &ENG_PHASE || e == &ENG_DIGITAL || e == &ENG_LOFI || e == &ENG_ACID || e == &ENG_JUNO || e == &ENG_VECTOR;
+           e == &ENG_PHASE || e == &ENG_DIGITAL || e == &ENG_ACID || e == &ENG_JUNO || e == &ENG_VECTOR;
 }
 static void vs_finish(track_t *t, const engine_t *e, int32_t *out, uint32_t n)
 {
