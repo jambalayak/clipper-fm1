@@ -569,7 +569,7 @@ static void puni_on(track_t *t, uint32_t note, uint32_t vel)
         int was = v->active && v->stage != 0;
         int32_t s = n > 1u ? (2 * (int32_t)j - (int32_t)(n - 1u)) * 7 : 0;   /* -7 .. 7 (x (n - 1)) */
         v->fine = n > 1u ? s * t->p[P_DETUNE] * 56 / (889 * (int32_t)(n - 1u)) : 0;
-        voice_start(t, v, note, n >= 4u ? vel * 40u / 100u : n > 1u ? vel * 70u / 100u : vel, t->p[P_GLIDE] != 0);
+        voice_start(t, v, note, n >= 4u ? vel / 2u : n > 1u ? vel * 70u / 100u : vel, t->p[P_GLIDE] != 0);
         if (j && !was) {                                /* random start phases (in phase they stack) */
             seed = seed * 1664525u + 1013904223u;
             unison_spread(t, v, seed);
