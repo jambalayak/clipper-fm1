@@ -47,7 +47,16 @@ static uint32_t uni_turns(uint32_t r, int32_t p16, int32_t d16)
 #include "eng_analog.c"
 #include "eng_digital.c"
 #include "eng_phase.c"
+#if !CLIPPER_SYNTH
 #include "eng_lofi.c"
+#else
+/* Keep engine index 3 reserved for saved-project compatibility. LOFI is not built in HORATIO-1. */
+static const engine_t ENG_RETIRED = {
+    .name = "LEGACY",
+    .note_on = analog_note_on,
+    .render = analog_render,
+};
+#endif
 #include "eng_sample.c"
 #include "eng_formant.c"
 #include "eng_trio.c"
@@ -106,7 +115,13 @@ static void *eng_arena_of(const track_t *t, uint32_t eng)
 #include "eng_slice.c"
 #endif
 
-static const engine_t *const ENGINES[NENGINES] = {&ENG_ANALOG, &ENG_DIGITAL, &ENG_PHASE, &ENG_LOFI, &ENG_SAMPLE,
+static const engine_t *const ENGINES[NENGINES] = {&ENG_ANALOG, &ENG_DIGITAL, &ENG_PHASE,
+#if CLIPPER_SYNTH
+                                                     &ENG_RETIRED,
+#else
+                                                     &ENG_LOFI,
+#endif
+                                                     &ENG_SAMPLE,
                                                     &ENG_FORMANT, &ENG_TRIO, &ENG_DRAWBAR, &ENG_GRAIN,
                                                     &ENG_FM6,    /* 9 (ENGI_FM6): always; SLICE after it (core.h) */
                                                     &ENG_PHYS, &ENG_NOISE, &ENG_HYBRID,
