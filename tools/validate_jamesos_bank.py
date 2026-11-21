@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Validate the HORATIO-1 source bank and its 50 compiled factory preset labels."""
+"""Validate the HORATIO-1 source bank and its 45 curated factory preset labels."""
 from pathlib import Path
 import re
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "JAMESOS-SOURCE-BANK.md"
-EXPECTED = {"SYNTHWAVE": 17, "VAPORWAVE": 17, "IDM & BRAINDANCE": 16}
+EXPECTED = {"SYNTHWAVE": 15, "VAPORWAVE": 15, "IDM & BRAINDANCE": 15}
 ROW = re.compile(
     r"^\|\s*(\d{2})\s*\|\s*([^|]+?)\s*\|\s*([^|]+?)\s*\|"
     r"\s*(\d{1,3})\s*/\s*(\d{1,3})\s*/\s*(\d{1,3})\s*\|\s*([^|]+?)\s*\|$"
@@ -24,10 +24,8 @@ IMPLEMENTED = {
     8: ("eng_macro.c", "NEON POLY"),
     9: ("eng_vps.c", "KAVINSKY GRWL"),
     10: ("eng_macro.c", "SUNSET STRINGS"),
-    11: ("eng_digital.c", "RETRO BELL"),
     12: ("eng_analog.c", "ARCADE OCT"),
     13: ("eng_digital.c", "TOM FM BASS"),
-    14: ("eng_macro.c", "VANGELIS SWELL"),
     15: ("eng_phase.c", "GRID RUNNER"),
     16: ("eng_analog.c", "TAPE DETUNE"),
     17: ("eng_phys.c", "MIDNIGHT SKY"),
@@ -42,17 +40,14 @@ IMPLEMENTED = {
     26: ("eng_analog.c", "FADED CASSETTE"),
     27: ("eng_drawbar.c", "PLAZA ORGAN"),
     28: ("eng_digital.c", "DREAMCAST"),
-    29: ("eng_macro.c", "LATE NIGHT WX"),
     30: ("eng_phys.c", "POOL MARIMBA"),
     31: ("eng_grain.c", "HYPNAGOGIC"),
     32: ("eng_digital.c", "SEGA SUNSET"),
-    33: ("eng_macro.c", "ELEVATOR CHIME"),
     34: ("eng_noise.c", "SLOWED FLUTE"),
     35: ("eng_phys.c", "CLOCK MODAL"),
     36: ("eng_grain.c", "AUTECHRE GRAIN"),
     37: ("eng_vps.c", "APHEX RUBBER"),
     38: ("eng_phys.c", "GLASS BELL"),
-    39: ("eng_noise.c", "MICRO GLITCH"),
     40: ("eng_analog.c", "BOC WARP TAPE"),
     41: ("eng_digital.c", "FM METAL PING"),
     42: ("eng_macro.c", "LIQUID FORMANT"),
@@ -92,16 +87,17 @@ def main() -> int:
         counts[section] += 1
 
     ids = [entry[0] for entry in entries]
-    if len(entries) != 50:
-        raise SystemExit(f"Expected 50 presets, found {len(entries)}")
-    if sorted(ids) != list(range(1, 51)) or len(set(ids)) != 50:
-        raise SystemExit("Preset IDs must be unique and cover 01..50")
+    active_ids = sorted(set(range(1, 51)) - {11, 14, 29, 33, 39})
+    if len(entries) != 45:
+        raise SystemExit(f"Expected 45 curated presets, found {len(entries)}")
+    if sorted(ids) != active_ids or len(set(ids)) != 45:
+        raise SystemExit("Curated preset IDs must preserve the original IDs, excluding retired 11, 14, 29, 33 and 39")
     if counts != EXPECTED:
         raise SystemExit(f"Category counts differ: {counts!r}")
     if any(not e[1].strip() or not e[2].strip() or not e[4].strip() for e in entries):
         raise SystemExit("Every preset needs a name, source engine and design notes")
-    if set(IMPLEMENTED) != set(range(1, 51)):
-        raise SystemExit("Firmware mapping must cover IDs 01..50 exactly once")
+    if set(IMPLEMENTED) != set(active_ids):
+        raise SystemExit("Firmware mapping must cover all 45 active IDs exactly once")
 
     firmware = ROOT / "firmware" / "src"
     for preset_id, (filename, label) in IMPLEMENTED.items():
@@ -138,8 +134,8 @@ def main() -> int:
         if not pattern.search(ui):
             raise SystemExit(f"Preset {preset_id:02d}: {label!r} missing from the unified HORATIO-1 browser list")
 
-    print("HORATIO-1 bank valid: 50 source presets, 50 compiled factory presets and 50 unified browser entries")
-    print("Categories: 17 Synthwave / 17 Vaporwave / 16 IDM & Braindance")
+    print("HORATIO-1 bank valid: 45 curated source presets, native engine records and 45 unified browser entries")
+    print("Categories: 15 Synthwave / 15 Vaporwave / 15 IDM & Braindance")
     return 0
 
 
